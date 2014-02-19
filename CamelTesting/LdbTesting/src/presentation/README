@@ -1,0 +1,86 @@
+Outline
+	Problem
+		Create echo service that reads message from queue, then echos message to another queue
+		Input message validation:
+			Only letters
+			Must have a length of at least 1
+		Request and Response should be correlated
+		Both request and response should be stored in database
+		Response should be prepended with timestamp of when message was processed
+	Architecture
+		Use Camel
+		Target database and JMS unknown at this stage
+			Use Apache MQ and H2 in-memory for simulation
+		For ease, using Maven for dependencies
+			Could be converted to gradle later if desired
+		Using JDBC
+			ORM could have been used
+				Advantage is different databases could be used with little to no difficulty
+				Disadvantage is potential to be locked into vendor specific SQL!
+	Testing
+		Unit
+			Black box testing only of Component Under Test (CUT)
+				CUT could be a class, a process, a system, etc.
+			External collaborators are mocked
+			Should be fast
+			Should run every build
+			No changes to external resources (file systems, database, etc.)
+			Side-effects should not be tested
+				Probably should be done in integration!
+		Integration
+			Collaboration interaction testing
+				Direct collaborators are NOT mocked
+				In-direct collaborators may or may not be mocked
+			May be slower than unit tests
+			No changes to external resources
+			Should be run every build
+			Try not to duplicate tests done in unit test
+				Logic was tested in unit testing, interaction being tested here!
+		System
+			Functional testing of system as a whole
+			No mocking
+			External resources should be modified as defined in specifications
+			Try not to duplicate unit/integration testing
+				There will be some overlap of course
+			Not run during every build
+				Probably should be done in an on-demand fashion
+	Order of Development
+		Top Down or Bottom Up?
+		Probably no right way
+			Depends on what already exists
+		Using Top Down for this Simulation
+	Define Camel Route
+		Read from queue
+		Save request to database
+		Invoke echo service
+		Save response to database
+		Place response on queue
+	Start by Testing Camel Route
+		In-memory queues
+			Could be mocked
+			To ensure component is used correctly, in-memory is done, however
+		In-memory database
+			Could be mocked
+			To ensure component is used correctly, in-memory is done, however
+		Mock echo service
+	Tests
+		Read error
+		Database error
+		Echo service error
+	Echo Service Unit Tests
+		Invalid messages
+			null message
+			empty message
+			non-letters in message
+		Valid message
+			Result is prepended with date
+	Integration Tests
+		Response timeout
+			ensure timeout is returned by route
+			ensure response does not stay on queue nor is processed
+		Ensure request/response correlation works
+		Ensure response matches db
+	System Test
+		Use "real" database
+		Use "real" queues
+			If using IBM WebSphere MQ, could discover need additional work for correlation!

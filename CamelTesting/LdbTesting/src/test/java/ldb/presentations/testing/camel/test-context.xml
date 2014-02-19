@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+	
+		http://camel.apache.org/schema/spring
+			http://camel.apache.org/schema/spring/camel-spring.xsd
+	">
+
+	<camel:camelContext id="camelContext"/>
+	
+	<bean id="camelRouteBuilder"
+		class="ldb.presentations.testing.camel.CamelRouteBuilder"/>
+	
+	<!-- Test only? not sure -->
+	<bean id="camelJms"
+		class="org.apache.camel.component.jms.JmsComponent"
+		p:connectionFactory-ref="connectionFactory">
+		<constructor-arg><ref bean="camelContext"/></constructor-arg>
+	</bean>
+				
+	<!-- Test only? -->
+	<bean id="connectionFactory"
+		class="org.apache.activemq.ActiveMQConnectionFactory"
+		p:brokerURL="vm://localhost?broker.persistent=false&amp;broker.useJmx=false"/>
+</beans>
