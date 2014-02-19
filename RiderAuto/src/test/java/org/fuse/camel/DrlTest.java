@@ -20,8 +20,7 @@ public class DrlTest {
 	public void test() {
 		
 		try {
-//			camelContext.start();
-			
+			camelContext.start();
 			
 			camelContext.createProducerTemplate()
 			.sendBody("http://0.0.0.0:8888/placeorder", "<?xml version=\"1.0\" encoding=\"UTF-8\"?><order name=\"motorDRL7777\" amount=\"1\"/>");
