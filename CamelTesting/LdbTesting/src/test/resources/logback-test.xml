@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!--
+	<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+	-->
+	
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} = %msg%n</pattern>	
+		</encoder>
+	</appender>
+	
+	<logger name="org.apache.camel" level="all"/>
+	<logger name="org.springframework.jdbc" level="all"/>
+	
+	<logger name="echo-routing" level="debug" additivity="false">
+		<appender-ref ref="stdout"/>
+	</logger>
+	
+	<root level="warn">
+		<appender-ref ref="stdout"/>
+	</root>
+</configuration>

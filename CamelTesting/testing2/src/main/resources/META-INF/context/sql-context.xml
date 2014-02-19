@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+	<!-- Camel Properties (could put in a properties file, but, why? -->
+	<!-- Ensure NO extra whitespace at end -->
+	<bean id="camelBridgeProperties"
+		class="org.apache.camel.spring.spi.BridgePropertyPlaceholderConfigurer">
+		<property name="properties">
+			<value>
+				echo.sql.create=INSERT INTO echo \
+					( \
+						request \
+					) \
+					VALUES \
+					( \
+						:#theRequest \
+					)
+				echo.sql.create.returning= \
+					RETURNING id INTO :#theId
+			</value>	
+		</property>
+	</bean>
+</beans>
