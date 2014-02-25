@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ldb.presentations</groupId>
-  <artifactId>LdbTesting</artifactId>
+  <artifactId>testing</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  	<java.version>1.6</java.version>
+  	<java.version>1.7</java.version>
   	<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
   	<junit.version>4.11</junit.version>
   	<spring.version>4.0.1.RELEASE</spring.version>
@@ -14,6 +14,7 @@
   	<logback.version>1.1.1</logback.version>
   	<activemq.version>5.7.0</activemq.version>
   	<h2.version>1.3.175</h2.version>
+  	<springockito.version>1.0.9</springockito.version>
   </properties>
   <build>
   	<plugins>
@@ -123,6 +124,12 @@
   		<groupId>com.h2database</groupId>
   		<artifactId>h2</artifactId>
   		<version>${h2.version}</version>
+  		<scope>test</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.kubek2k</groupId>
+  		<artifactId>springockito</artifactId>
+  		<version>${springockito.version}</version>
   		<scope>test</scope>
   	</dependency>
   </dependencies>

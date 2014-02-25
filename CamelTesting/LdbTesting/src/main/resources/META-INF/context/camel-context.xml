@@ -30,4 +30,9 @@
 	<bean id="sql"
 		class="org.apache.camel.component.sql.SqlComponent"
 		p:dataSource-ref="dataSource"/>
+	
+	<!-- Transaction Manager (XA?) -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource"/>
 </beans>

@@ -4,9 +4,9 @@ Outline
 		Input message validation:
 			Only letters
 			Must have a length of at least 1
-		Request and Response should be correlated
 		Both request and response should be stored in database
 		Response should be prepended with timestamp of when message was processed
+            Use a timestamp service
 	Architecture
 		Use Camel
 		Target database and JMS unknown at this stage
@@ -51,9 +51,8 @@ Outline
 		Using Top Down for this Simulation
 	Define Camel Route
 		Read from queue
-		Save request to database
 		Invoke echo service
-		Save response to database
+		Save request and response to database
 		Place response on queue
 	Start by Testing Camel Route
 		In-memory queues

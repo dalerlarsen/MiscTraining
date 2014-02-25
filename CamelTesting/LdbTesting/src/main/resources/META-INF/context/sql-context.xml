@@ -14,14 +14,14 @@
 			<value>
 				echo.sql.create=INSERT INTO echo \
 					( \
-						request \
+						request, \
+						response \
 					) \
 					VALUES \
 					( \
-						:#theRequest \
+						:#theRequest, \
+						:#theResponse \
 					)
-				echo.sql.create.returning= \
-					RETURNING id INTO :#theId
 			</value>	
 		</property>
 	</bean>
