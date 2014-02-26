@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>MyApp Test Suite</title>
+  <link rel="stylesheet" href="../resources/qunit-1.14.0.css" type="text/css">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="../resources/qunit-1.14.0.js"></script>
+  <script src="jquery.ba-enumerate.js"></script>
+  <script src="myappDomTesting-test.js"></script>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		$("#drltest li").enumerate(4);  		
+  	});
+  </script>
+</head>
+<body>
+  <h1 id="qunit-header">MyApp Test Suite</h1>
+  <h2 id="qunit-banner"></h2>
+  <div id="qunit-testrunner-toolbar"></div>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">
+    <ul>
+      <li>foo</li>
+      <li>bar</li>
+      <li>baz</li>
+    </ul>
+  </div>
+  <div id="drltest">
+    <ul>
+      <li>foo</li>
+      <li>bar</li>
+      <li>baz</li>
+    </ul>
+  </div>
+</body>
+</html>
