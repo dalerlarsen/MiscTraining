@@ -126,6 +126,9 @@ test("stops & starts", function() {
 	  });
 });
 
+// Async testing
+module("Mocking AJAX");
+
 // Mocking AJAX - if you mock your AJAX requests, you actually test your JavaScript and not your server
 
 // Simulate your API.
@@ -156,4 +159,26 @@ test("user tests", function() {
         equal(data.user, "sample user 123", "user found, id should be 123");
         start();
     });
+});
+
+
+// Running specific tests
+//
+// Add ?filter=foo to the URL to run only tests whose names contain "foo".
+//    file:///C:/dev/GitRepos/MiscTraining/JavaScript/JavaScriptUnitTesting/FromQunitSlideShow/myappDomTesting.html?filter=core
+//
+// Global Pollution
+//  Add ?noglobals to the URL and test will fail any "leaky" test (there is a checkbox on the html page)
+//
+
+module("leaky");
+
+test("not leaky", 1, function() {
+    var x = true;
+    ok(x, "passes because x is true");
+});
+
+test("leaky", 1, function() {
+    x = true;
+    ok(x, "also passes because x is true");
 });

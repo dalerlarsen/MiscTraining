@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>QUnit Callbacks</title>
+    <link rel="stylesheet" href="../resources/qunit-1.14.0.css" type="text/css">
+    <script src="../resources/qunit-1.14.0.js"></script>
+    <script type="text/javascript">
+
+        // Runs once at the very beginning.
+
+        QUnit.begin = function() {
+            console.log("Running Test Suite");
+        };
+
+        // Runs once at the very end.
+
+        QUnit.done = function(obj) {
+            console.info("Suite: %d failures / %d tests", obj.failed , obj.total);
+        };
+
+        // Runs once after each assertion.
+
+        QUnit.log = function(obj) {
+            console[ obj.result ? "log" : "error" ](obj.message);
+        };
+
+        // Runs before each test.
+
+        QUnit.testStart = function(obj) {
+            console.group("Test: " + obj.name);
+        };
+
+        // Runs after each test.
+
+        QUnit.testDone = function(obj) {
+            console.info("Test: %d failures / %d tests", obj.failed, obj.total);
+            console.groupEnd();
+        };
+
+        // Runs before each module.
+
+        QUnit.moduleStart = function(obj) {
+            console.group("Module: " + obj.name);
+        };
+
+        // Runs after each module.
+
+        QUnit.moduleDone = function(obj) {
+            console.info("Module: %d failures / %d tests", obj.failed, obj.total);
+            console.groupEnd();
+        };
+
+        // Runs after each test group. Redefining this function will
+        // override the built-in #qunit-fixture reset logic.
+
+        QUnit.reset = function() {
+            console.log("Test done!");
+        };
+
+        module("foo");
+
+        test("a test in the foo module", function() {
+            ok(true, "this test will pass");
+        });
+
+        test("another test in the foo module", function() {
+            ok(true, "this test will pass");
+        });
+
+    </script>
+</head>
+<body>
+<h1 id="qunit-header">QUnit Callbacks</h1>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture"></div>
+</body>
+</html>
