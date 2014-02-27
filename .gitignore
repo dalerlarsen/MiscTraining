@@ -6,3 +6,14 @@
 *.ear
 
 target/
+JavaScript/.idea/.name
+JavaScript/.idea/compiler.xml
+JavaScript/.idea/copyright/profiles_settings.xml
+JavaScript/.idea/encodings.xml
+JavaScript/.idea/gradle.xml
+JavaScript/.idea/misc.xml
+JavaScript/.idea/modules.xml
+JavaScript/.idea/scopes/scope_settings.xml
+JavaScript/.idea/vcs.xml
+JavaScript/.idea/workspace.xml
+JavaScript/JavaScript.iml
